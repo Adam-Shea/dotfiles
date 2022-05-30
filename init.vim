@@ -33,9 +33,15 @@ Plug 'VonHeikemen/lsp-zero.nvim'
 Plug 'chriskempson/base16-vim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'feline-nvim/feline.nvim'
-Plug 'mhinz/vim-startify'
 Plug 'folke/trouble.nvim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'RRethy/vim-illuminate'
+Plug 'romgrk/barbar.nvim'
+Plug 'glepnir/dashboard-nvim'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'windwp/nvim-autopairs'
 call plug#end()
 
 
@@ -46,11 +52,19 @@ set encoding=UTF-8
 lua <<EOF
 require("toggleterm").setup{}
 require('feline').setup()
+require('colorizer').setup()
 -- require("trouble").setup {}
+require('nvim-autopairs').setup{}
+
+require'lspconfig'.gopls.setup {
+    on_attach = function(client)
+      -- [[ other on_attach code ]]
+      require 'illuminate'.on_attach(client)
+    end,
+}
 
 local present, lsp = pcall(require, "lsp-zero")
 if not present then
-   return
 end
 
 
