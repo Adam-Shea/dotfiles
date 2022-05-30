@@ -34,6 +34,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'feline-nvim/feline.nvim'
 Plug 'mhinz/vim-startify'
+Plug 'folke/trouble.nvim'
 call plug#end()
 
 
@@ -43,6 +44,7 @@ set termguicolors
 lua <<EOF
 require("toggleterm").setup{}
 require('feline').setup()
+require("trouble").setup {}
 
 local present, lsp = pcall(require, "lsp-zero")
 if not present then
@@ -67,7 +69,7 @@ lsp.set_preferences({
   suggest_lsp_servers = true,
   setup_servers_on_start = true,
   set_lsp_keymaps = true,
-  configure_diagnostics = true,
+  configure_diagnostics = false,
   cmp_capabilities = true,
   manage_nvim_cmp = true,
   call_servers = 'local',
