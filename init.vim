@@ -30,12 +30,20 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
 Plug 'VonHeikemen/lsp-zero.nvim'
+Plug 'chriskempson/base16-vim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'feline-nvim/feline.nvim'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 
 let mapleader = ' '
+set termguicolors
 
 lua <<EOF
+require("toggleterm").setup{}
+require('feline').setup()
+
 local present, lsp = pcall(require, "lsp-zero")
 if not present then
    return
@@ -81,6 +89,7 @@ lsp.setup_servers({
 })
 
 lsp.setup()
+
 
 EOF
 

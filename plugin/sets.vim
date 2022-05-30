@@ -19,5 +19,5 @@ set undofile
 set incsearch "Highlight matching text as you search
 set scrolloff=8 "Start scrolling when you're 8 characters from the bottom
 set signcolumn=yes "Displays error to the left
-
+set termguicolors
 
