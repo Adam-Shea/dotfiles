@@ -35,16 +35,18 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'feline-nvim/feline.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'folke/trouble.nvim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
 let mapleader = ' '
 set termguicolors
+set encoding=UTF-8
 
 lua <<EOF
 require("toggleterm").setup{}
 require('feline').setup()
-require("trouble").setup {}
+-- require("trouble").setup {}
 
 local present, lsp = pcall(require, "lsp-zero")
 if not present then
@@ -61,7 +63,6 @@ lsp.ensure_installed({
   'html',
   'cssls',
   'angularls',
-  'tsserver',
   'eslint'
 })
 lsp.preset('recommended')
